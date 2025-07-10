@@ -8,4 +8,5 @@ main() {
     print(number2);
   }
   print("Hello $name");
+  print(isPracticedToday);
 }
