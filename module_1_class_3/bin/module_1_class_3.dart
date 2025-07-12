@@ -3,4 +3,7 @@ main () {
   print(numbers);
   numbers.add(60);
   print(numbers);
+
+  numbers.addAll([80, 100, 120]);
+  print(numbers);
 }
