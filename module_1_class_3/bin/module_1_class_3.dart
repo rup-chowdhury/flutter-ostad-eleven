@@ -8,6 +8,7 @@ main () {
   print(numbers);
 
   numbers.remove(100);
-  
+  print(numbers);
+
 
 }
