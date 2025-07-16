@@ -11,6 +11,9 @@ main () {
   print(numbers);
 
   numbers.removeAt(2);
+  print(numbers);
+
+  print(numbers.contains(60));
 
 
 }
