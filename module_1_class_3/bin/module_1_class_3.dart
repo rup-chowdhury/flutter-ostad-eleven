@@ -10,5 +10,7 @@ main () {
   numbers.remove(100);
   print(numbers);
 
+  numbers.removeAt(2);
+
 
 }
