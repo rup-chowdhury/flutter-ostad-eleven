@@ -14,6 +14,4 @@ main () {
   print(numbers);
 
   print(numbers.contains(60));
-
-
 }
