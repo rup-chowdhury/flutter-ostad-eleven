@@ -16,4 +16,8 @@ main () {
   print(numbers.contains(60));
 
   print(numbers.length);
+
+  print(numbers.reversed);
+
+  
 }
