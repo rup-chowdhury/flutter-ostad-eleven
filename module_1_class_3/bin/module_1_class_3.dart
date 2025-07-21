@@ -9,8 +9,6 @@ main () {
 
   numbers.remove(100);
   print(numbers);
-<<<<<<< HEAD
-=======
 
   numbers.removeAt(2);
   print(numbers);
