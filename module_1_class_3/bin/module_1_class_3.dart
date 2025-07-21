@@ -18,5 +18,4 @@ main () {
   print(numbers.length);
 
   print(numbers.reversed);
->>>>>>> e5475df0d197bdd66cad225f82f88920bd64cb8c
 }
