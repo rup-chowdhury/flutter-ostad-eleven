@@ -9,5 +9,4 @@ main () {
 
   numbers.remove(100);
   print(numbers);
-  
 }
