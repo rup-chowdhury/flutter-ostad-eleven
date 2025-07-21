@@ -9,4 +9,16 @@ main () {
 
   numbers.remove(100);
   print(numbers);
+<<<<<<< HEAD
+=======
+
+  numbers.removeAt(2);
+  print(numbers);
+
+  print(numbers.contains(60));
+
+  print(numbers.length);
+
+  print(numbers.reversed);
+>>>>>>> e5475df0d197bdd66cad225f82f88920bd64cb8c
 }
