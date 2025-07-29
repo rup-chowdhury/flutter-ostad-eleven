@@ -49,6 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ElevatedButton(
                     onPressed: (){},
                     child: Text('Press Me')),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green
+                ),),
               ],
             )
           ],
