@@ -47,8 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 260,),
                 SizedBox(height: 24,),
                 ElevatedButton(
-                    onPressed: (){},
-                    child: Text('Press Me')),
+                    onPressed: (){
+                      final snackBar = SnackBar(
+                        content: const Text("Button Pressed!"),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                    child: Text('Press Me'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green
                 ),),
