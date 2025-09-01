@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> loadRecipes() async {
-    final String response = await rootBundle.loadString('assets/recipes.json');
+    final String response = await rootBundle.loadString('lib/data/recipes.json');
     final data = jsonDecode(response);
     setState(() {
       recipes = data['recipes'];
