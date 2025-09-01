@@ -30,38 +30,39 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Food Recipes', style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w500
-        ),),
-        backgroundColor: Colors.blue,
-
-      ),
-      body: ListView.builder(
-      itemCount: recipes.length,
-      itemBuilder: (context, index) {
-      final recipe = recipes[index];
-      return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(16),
-      ),
-        child: ListTile(
-        leading: const Icon(Icons.emoji_food_beverage),
-              tileColor: Colors.white,
-              title: Text(recipes['title']),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Text(recipes['description']),
-                ],
-              ),
-            ),
-      );
-      }
-    )
-    );
-
+        appBar: AppBar(
+          title: Text(
+            'Food Recipes',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+          ),
+          backgroundColor: Colors.blue,
+        ),
+        body: recipes.isEmpty
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                itemCount: recipes.length,
+                itemBuilder: (context, index) {
+                  final recipe = recipes[index];
+                  return Card(
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: ListTile(
+                      leading: const Icon(Icons.emoji_food_beverage),
+                      tileColor: Colors.white,
+                      title: Text(recipe['title']),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24)),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(recipe['description']),
+                        ],
+                      ),
+                    ),
+                  );
+                }));
   }
 }
