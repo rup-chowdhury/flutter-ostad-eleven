@@ -32,8 +32,8 @@ class _ProductItemState extends State<ProductItem> {
           Text("Product Code: ${widget.product.productCode}"),
           Row(
             children: [
-              Text("Quantity: ${widget.product.quantity}"),
-              Text("Unit Price: ${widget.product.unitPrice}"),
+              Text("Quantity: ${widget.product.quantity} "),
+              Text(" Unit Price: ${widget.product.unitPrice}"),
             ],
           ),
 

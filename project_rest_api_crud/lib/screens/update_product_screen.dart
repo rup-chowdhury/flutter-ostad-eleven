@@ -43,11 +43,11 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
   void initState() {
     // TODO: implement initState
     _productNameTEController.text = widget.name;
-    _productCodeTEController.text = widget.code as String;
+    _productCodeTEController.text = widget.code.toString();
     _productImageTEController.text = widget.img;
-    _unitPriceTEController.text = widget.price as String;
-    _quantityTEController.text = widget.quantity as String;
-    _totalPriceTEController.text = widget.totalPrice as String;
+    _unitPriceTEController.text = widget.price.toString();
+    _quantityTEController.text = widget.quantity.toString();
+    _totalPriceTEController.text = widget.totalPrice.toString();
     super.initState();
     setState(() {});
   }
