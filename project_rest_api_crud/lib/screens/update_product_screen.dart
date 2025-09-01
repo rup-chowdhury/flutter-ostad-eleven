@@ -43,10 +43,10 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
   void initState() {
     // TODO: implement initState
     _productNameTEController.text = widget.name;
-    _productCodeTEController = widget.code as TextEditingController;
+    _productCodeTEController.text = widget.code as String;
     _productImageTEController.text = widget.img;
     _unitPriceTEController.text = widget.price as String;
-    _quantityTEController = widget.quantity as TextEditingController;
+    _quantityTEController.text = widget.quantity as String;
     _totalPriceTEController.text = widget.totalPrice as String;
     super.initState();
     setState(() {});
@@ -77,13 +77,14 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
     _inProgress = true;
     setState(() {});
     Uri uri = Uri.parse("http://35.73.30.144:2008/api/v1/UpdateProduct/${widget.id}");
+    int totalPrice = int.parse(_quantityTEController.text) * int.parse(_unitPriceTEController.text);
     Map<String, dynamic> requestBody = {
       "Img": _productImageTEController.text,
-      "ProductCode": _productCodeTEController.text,
+      "ProductCode": int.parse(_productCodeTEController.text),
       "ProductName": _productNameTEController.text,
-      "Qty": _quantityTEController.text,
-      "TotalPrice": _totalPriceTEController.text,
-      "UnitPrice": _unitPriceTEController.text
+      "Qty": int.parse(_quantityTEController.text),
+      "TotalPrice": totalPrice,
+      "UnitPrice": int.parse(_unitPriceTEController.text)
     };
     Response response = await post(uri,
         headers: {"Content-Type": "application/json"},
