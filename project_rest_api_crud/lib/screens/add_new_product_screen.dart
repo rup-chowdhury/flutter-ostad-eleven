@@ -54,10 +54,10 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
     int totalPrice = int.parse(_unitPriceTEController.text) * int.parse(_quantityTEController.text);
     Map<String, dynamic> requestBody = {
       "ProductName": _productNameTEController.text,
-      "ProductCode": _productCodeTEController.text,
+      "ProductCode": int.parse(_productCodeTEController.text),
       "Img": _productImageTEController.text,
-      "Qty": _quantityTEController.text,
-      "UnitPrice": _unitPriceTEController.text,
+      "Qty": int.parse(_quantityTEController.text),
+      "UnitPrice": int.parse(_unitPriceTEController.text),
       "TotalPrice": totalPrice,
     };
     Response response = await post(uri,
