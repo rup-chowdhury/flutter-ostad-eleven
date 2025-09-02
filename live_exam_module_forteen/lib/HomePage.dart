@@ -59,6 +59,7 @@ class _HomePageState extends State<HomePage> {
                       subtitle: Text(recipe['description']),
                     ),
                   );
-                }));
+                })
+    );
   }
 }
