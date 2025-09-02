@@ -20,7 +20,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> loadRecipes() async {
-    final String response = await rootBundle.loadString('lib/data/recipes.json');
+    final String response =
+        await rootBundle.loadString('lib/data/recipes.json');
     final data = jsonDecode(response);
     setState(() {
       recipes = data['recipes'];
@@ -55,12 +56,7 @@ class _HomePageState extends State<HomePage> {
                       title: Text(recipe['title']),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24)),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(recipe['description']),
-                        ],
-                      ),
+                      subtitle: Text(recipe['description']),
                     ),
                   );
                 }));
