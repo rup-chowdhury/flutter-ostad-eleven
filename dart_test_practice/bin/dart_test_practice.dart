@@ -9,6 +9,7 @@ main () {
   print(max(16, 9));
   
   print(min(6, 13));
+  
 }
 
 twice(x) => x*2;
