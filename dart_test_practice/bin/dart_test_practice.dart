@@ -12,7 +12,7 @@ main () {
 
 }
 
-twice(x) => x*2;
+twice(x) => x * 2;
 
 thrice(y){
   return y*3;
