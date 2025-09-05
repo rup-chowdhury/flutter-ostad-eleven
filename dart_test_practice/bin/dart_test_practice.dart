@@ -1,5 +1,5 @@
 main () {
-  print('Hello There!');
+  print('Hello There !');
 
   print(twice(3));
 
@@ -9,7 +9,7 @@ main () {
   print(max(16, 9));
   
   print(min(6, 13));
-  
+
 }
 
 twice(x) => x*2;
