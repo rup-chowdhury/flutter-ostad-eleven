@@ -10,7 +10,7 @@ main () {
   
   print(min(6, 13));
   
-  twoFer();
+  twoFer('Alice');
 
 }
 
