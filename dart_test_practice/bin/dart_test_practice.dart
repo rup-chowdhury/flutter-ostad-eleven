@@ -23,5 +23,5 @@ min(a,b) => (a<b)? a:b;
 max(a, b) => (a>b)? a : b;
 
 twoFer(String name){
-  print()
+  print('One for $name, one for me');
 }
