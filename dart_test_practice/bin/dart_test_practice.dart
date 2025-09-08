@@ -27,3 +27,7 @@ max(a, b) => (a>b)? a : b;
 twoFer(String name){
   print('One for $name, one for me');
 }
+
+discountedPrice(double price){
+  
+}
