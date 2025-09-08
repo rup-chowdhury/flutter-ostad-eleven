@@ -29,5 +29,5 @@ twoFer(String name){
 }
 
 discountedPrice(double price){
-  
+  print('Total: $price \n ');
 }
