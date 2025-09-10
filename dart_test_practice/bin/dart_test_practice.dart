@@ -32,3 +32,6 @@ discountedPrice(double price){
   print('Total: $price \n Discounted Price: ${price * 0.2}');
 }
 
+vatAddedPrice(double price){
+  print('Total: $price \n VAT Added Price: ${price + price * 0.2}');
+}
