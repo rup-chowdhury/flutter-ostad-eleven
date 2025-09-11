@@ -15,7 +15,6 @@ main () {
   discountedPrice(100);
 
   vatAddedPrice(100);
-
 }
 
 twice(x) => x * 2;
