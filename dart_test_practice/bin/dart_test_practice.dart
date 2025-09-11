@@ -5,7 +5,6 @@ main () {
 
   print(thrice(4));
 
-
   print(max(16, 9));
   
   print(min(6, 13));
