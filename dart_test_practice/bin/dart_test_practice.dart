@@ -1,5 +1,5 @@
 main () {
-  
+
   print('Hello There !');
 
   print(twice(3));
@@ -15,6 +15,7 @@ main () {
   discountedPrice(100);
 
   vatAddedPrice(100);
+  
 }
 
 twice(x) => x * 2;
