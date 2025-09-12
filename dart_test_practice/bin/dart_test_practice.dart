@@ -15,13 +15,14 @@ main () {
   discountedPrice(100);
 
   vatAddedPrice(100);
-  
+
 }
 
 twice(x) => x * 2;
 
 thrice(y){
   return y*3;
+  
 }
 
 min(a,b) => (a<b)? a:b;
