@@ -1,6 +1,8 @@
 main () {
   List<int> numbers = [10, 20, 30, 40];
   print(numbers);
+  print(numbers.reversed);
+
   numbers.add(60);
   print(numbers);
 
@@ -18,4 +20,13 @@ main () {
   print(numbers.length);
 
   print(numbers.reversed);
+
+  print(numbers.runtimeType);
+
+
+  // Dynamic list
+
+  List test = ['Nothing', true, 5, 3.1416, false];
+
+  print(test.runtimeType);
 }
