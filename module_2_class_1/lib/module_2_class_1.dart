@@ -7,5 +7,11 @@ main(){
     'occupation' : 'Student'
   };
 
+  print(person);
+
+  //access key
+
+  print(person['name']);
+
 
 }
