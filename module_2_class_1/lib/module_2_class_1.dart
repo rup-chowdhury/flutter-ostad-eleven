@@ -1,7 +1,4 @@
 main(){
-  print(calculate());
-}
 
-int calculate() {
-  return 6 * 7;
+  Map<String, String> person = {};
 }
