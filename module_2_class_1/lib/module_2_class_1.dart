@@ -11,7 +11,9 @@ main(){
 
   //access key
 
+  print('What\'s your name ?');
   print(person['name']);
+  print('I am ${person['age']} years old');
 
 
 }
