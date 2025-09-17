@@ -28,5 +28,6 @@ main(){
   print(person);
 
   // checking if the map has a specific key
-
+  print(person.containsKey('occupation'));
+  print(person.containsKey('gender'));
 }
