@@ -22,4 +22,9 @@ main(){
   person['occupation'] = 'Researcher';
 
   print(person);
+
+  // remove pair from map
+  person.remove('gender');
+  print(person);
+
 }
