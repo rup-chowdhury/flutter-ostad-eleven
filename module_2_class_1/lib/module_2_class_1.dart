@@ -27,4 +27,6 @@ main(){
   person.remove('gender');
   print(person);
 
+  // checking if the map has a specific key
+
 }
