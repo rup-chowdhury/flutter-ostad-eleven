@@ -18,4 +18,6 @@ main(){
   print(person['name']);
   print('I am ${person['age']} years old');
 
+  // updating a map value
+  person['occupation'] = 'Researcher';
 }
