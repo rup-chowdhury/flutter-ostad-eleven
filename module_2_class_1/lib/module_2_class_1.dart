@@ -20,4 +20,6 @@ main(){
 
   // updating a map value
   person['occupation'] = 'Researcher';
+
+  print(person);
 }
