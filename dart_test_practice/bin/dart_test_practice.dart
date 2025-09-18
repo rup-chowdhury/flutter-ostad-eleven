@@ -18,6 +18,7 @@ main () {
 
 }
 
+
 twice(x) => x * 2;
 
 thrice(y){
