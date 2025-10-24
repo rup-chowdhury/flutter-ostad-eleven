@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:task_manager_basic/ui/screens/login_screen.dart';
 import 'package:task_manager_basic/ui/screens/sign_up_screen.dart';
 import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 
@@ -47,6 +48,7 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                     length: 6,
                     obscureText: false,
                     animationType: AnimationType.fade,
+                    keyboardType: TextInputType.number,
                     pinTheme: PinTheme(
                       shape: PinCodeFieldShape.box,
                       borderRadius: BorderRadius.circular(5),
@@ -55,8 +57,7 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                       activeFillColor: Colors.white,
                     ),
                     animationDuration: Duration(milliseconds: 300),
-                    backgroundColor: Colors.blue.shade50,
-                    enableActiveFill: true,
+                    backgroundColor: Colors.transparent,
                     controller: _otpTextEditingController,
                     appContext: context,
                   ),
@@ -71,7 +72,7 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                     child: RichText(
                       text: TextSpan(
                           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
-                          text: "Have account? ",
+                          text: "Already have an account? ",
                           children: [
                             TextSpan(
                               text: "Sign In",
@@ -92,8 +93,12 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
     );
   }
 
+  void _onTapNextButton() {
+
+  }
+
   void _onTapSignInButton() {
-    Navigator.pop(context);
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (predicate) => false);
   }
 
   @override
