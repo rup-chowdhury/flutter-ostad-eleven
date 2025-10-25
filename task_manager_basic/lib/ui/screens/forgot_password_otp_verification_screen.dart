@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:task_manager_basic/ui/screens/login_screen.dart';
+import 'package:task_manager_basic/ui/screens/reset_password_screen.dart';
 import 'package:task_manager_basic/ui/screens/sign_up_screen.dart';
 import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 
@@ -65,8 +66,8 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                     height: 32,
                   ),
                   FilledButton(
-                      onPressed: () {},
-                      child: Icon(Icons.arrow_circle_right_outlined)),
+                      onPressed: _onTapVerifyButton,
+                      child: Text('Verify'),),
                   SizedBox(height: 40,),
                   Center(
                     child: RichText(
@@ -93,17 +94,17 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
     );
   }
 
-  void _onTapNextButton() {
-
-  }
-
   void _onTapSignInButton() {
     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (predicate) => false);
   }
 
+  void _onTapVerifyButton() {
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ResetPasswordScreen()), (predicate) => false);
+  }
+
   @override
   void dispose() {
-    _otpTextEditingController.dispose();
+    // _otpTextEditingController.dispose();
     super.dispose();
   }
 }
