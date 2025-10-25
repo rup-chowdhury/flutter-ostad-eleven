@@ -5,15 +5,16 @@ import 'package:task_manager_basic/ui/screens/login_screen.dart';
 import 'package:task_manager_basic/ui/screens/sign_up_screen.dart';
 import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 
-class ForgotPasswordOtpVerificationScreen extends StatefulWidget {
-  const ForgotPasswordOtpVerificationScreen({super.key});
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
-  State<ForgotPasswordOtpVerificationScreen> createState() => _ForgotPasswordOtpVerificationScreenState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpVerificationScreen> {
-  final TextEditingController _otpTextEditingController = TextEditingController();
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  final TextEditingController _passwordTextEditingController = TextEditingController();
+  final TextEditingController _confirmPasswordTextEditingController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -32,11 +33,11 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                     height: 82,
                   ),
                   Text(
-                    'Enter your OTP',
+                    'Reset Password',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Text(
-                    'A 6 digits OTP has been sent to your Email address.',
+                    'Password should be more than 6 letters and combination of letters and numbers',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Colors.grey,
                     ),
@@ -44,28 +45,26 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                   SizedBox(
                     height: 24,
                   ),
-                  PinCodeTextField(
-                    length: 6,
-                    obscureText: false,
-                    animationType: AnimationType.fade,
-                    keyboardType: TextInputType.number,
-                    pinTheme: PinTheme(
-                      shape: PinCodeFieldShape.box,
-                      borderRadius: BorderRadius.circular(5),
-                      fieldHeight: 50,
-                      fieldWidth: 40,
-                      activeFillColor: Colors.white,
+                  TextFormField(
+                    controller: _passwordTextEditingController,
+                    decoration: InputDecoration(
+                      hintText: 'New Password',
                     ),
-                    animationDuration: Duration(milliseconds: 300),
-                    backgroundColor: Colors.transparent,
-                    controller: _otpTextEditingController,
-                    appContext: context,
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  TextFormField(
+                    controller: _confirmPasswordTextEditingController,
+                    decoration: InputDecoration(
+                      hintText: 'Confirm New Password',
+                    ),
                   ),
                   SizedBox(
                     height: 32,
                   ),
                   FilledButton(
-                      onPressed: () {},
+                      onPressed: _onTapNextButton,
                       child: Icon(Icons.arrow_circle_right_outlined)),
                   SizedBox(height: 40,),
                   Center(
@@ -94,7 +93,7 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
   }
 
   void _onTapNextButton() {
-
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (predicate) => false);
   }
 
   void _onTapSignInButton() {
@@ -103,7 +102,8 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
 
   @override
   void dispose() {
-    _otpTextEditingController.dispose();
+    _passwordTextEditingController.dispose();
+    _confirmPasswordTextEditingController.dispose();
     super.dispose();
   }
 }
