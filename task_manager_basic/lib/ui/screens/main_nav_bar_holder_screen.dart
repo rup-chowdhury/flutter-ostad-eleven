@@ -10,6 +10,26 @@ class MainNavBarHolderScreen extends StatefulWidget {
 class _MainNavBarHolderScreenState extends State<MainNavBarHolderScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+      bottomNavigationBar: NavigationBar(destinations: [
+        NavigationDestination(
+          icon: Icon(Icons.new_label_outlined),
+          label: 'New',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.blur_circular),
+          label: 'Progress',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.new_label_outlined),
+          label: 'Canceled',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.new_label_outlined),
+          label: 'Completed',
+        ),
+      ]),
+    );
   }
 }
