@@ -10,6 +10,8 @@ class ProgressTaskScreen extends StatefulWidget {
 class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){}, child: Icon(Icons.add),),
+    );
   }
 }
