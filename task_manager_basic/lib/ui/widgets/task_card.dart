@@ -26,6 +26,9 @@ class TaskCard extends StatelessWidget {
                 fontWeight: FontWeight.w600
             ),
           ),
+          SizedBox(
+            height: 8,
+          ),
           Row(
             children: [
               Chip(
@@ -37,7 +40,7 @@ class TaskCard extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              IconButton(onPressed: () {}, icon: Icon(Icons.edit, color: Colors.lightGreen,)),
+              IconButton(onPressed: () {}, icon: Icon(Icons.edit, color: Colors.grey,)),
               IconButton(onPressed: () {}, icon: Icon(Icons.delete, color: Colors.red,)),
             ],
           )

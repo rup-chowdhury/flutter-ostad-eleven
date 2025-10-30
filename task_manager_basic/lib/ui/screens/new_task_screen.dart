@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager_basic/ui/screens/add_new_task_screen.dart';
 import 'package:task_manager_basic/ui/widgets/task_card.dart';
 import 'package:task_manager_basic/ui/widgets/task_count_by_status_card.dart';
 
@@ -14,7 +15,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: _onTabFAB,
           child: Icon(Icons.add),
         ),
         body: Padding(
@@ -58,6 +59,10 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
             ],
           ),
         ));
+  }
+
+  void _onTabFAB() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => AddNewTaskScreen()));
   }
 }
 
