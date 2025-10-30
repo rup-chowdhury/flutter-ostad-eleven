@@ -10,6 +10,10 @@ class AddNewTaskScreen extends StatefulWidget {
 }
 
 class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
+  final TextEditingController _titleTEController = TextEditingController();
+  final TextEditingController _descriptionTEController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,32 +22,45 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 32),
-                Text('Add New Task',
-                style: Theme.of(context).textTheme.titleLarge,),
-                SizedBox(height: 16,),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Title',
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 32),
+                  Text('Add New Task',
+                  style: Theme.of(context).textTheme.titleLarge,),
+                  SizedBox(height: 16,),
+                  TextFormField(
+                    controller: _titleTEController,
+                    decoration: InputDecoration(
+                      hintText: 'Title',
+                    ),
+                    textInputAction: TextInputAction.next,
                   ),
-                ),
-                SizedBox(height: 10,),
-                TextFormField(
-                  maxLines: 6,
-                  decoration: InputDecoration(
-                    hintText: 'Description',
+                  SizedBox(height: 10,),
+                  TextFormField(
+                    controller: _descriptionTEController,
+                    maxLines: 6,
+                    decoration: InputDecoration(
+                      hintText: 'Description',
+                    ),
                   ),
-                ),
-                SizedBox(height: 16,),
-                FilledButton(onPressed: (){}, child: Text('Add Task')),
-              ],
+                  SizedBox(height: 16,),
+                  FilledButton(onPressed: (){}, child: Text('Add Task')),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _titleTEController.dispose();
+    _descriptionTEController.dispose();
+    super.dispose();
   }
 }
