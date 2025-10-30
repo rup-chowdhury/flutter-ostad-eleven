@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 
 class TaskCard extends StatelessWidget {
+  final String labelText;
+  final Color labelBGColor;
   const TaskCard({
-    super.key,
+    super.key, required this.labelText, required this.labelBGColor,
   });
 
   @override
@@ -27,8 +29,8 @@ class TaskCard extends StatelessWidget {
           Row(
             children: [
               Chip(
-                label: Text('New', style: TextStyle(color: Colors.white),),
-                backgroundColor: Colors.blue,
+                label: Text(labelText, style: TextStyle(color: Colors.white),),
+                backgroundColor: labelBGColor,
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(32)
