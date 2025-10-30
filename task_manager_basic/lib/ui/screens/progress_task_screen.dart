@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager_basic/ui/widgets/task_card.dart';
 import 'package:task_manager_basic/ui/widgets/task_count_by_status_card.dart';
 
 class ProgressTaskScreen extends StatefulWidget {
@@ -45,24 +46,7 @@ class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
               Expanded(
                   child: ListView.separated(
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.circular(8)
-                          ),
-                          tileColor: Colors.white,
-                          title: Text('Title will be here'),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Description of the task. How this task will be done.'),
-                              Text('Date: 30/10/2025',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600
-                              ),),
-                            ],
-                          ),
-                        );
+                        return TaskCard();
                       },
                       separatorBuilder: (context, index) {
                         return SizedBox(
@@ -76,3 +60,4 @@ class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
         ));
   }
 }
+
