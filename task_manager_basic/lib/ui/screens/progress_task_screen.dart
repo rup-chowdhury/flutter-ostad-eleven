@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager_basic/ui/widgets/task_count_by_status_card.dart';
 
 class ProgressTaskScreen extends StatefulWidget {
   const ProgressTaskScreen({super.key});
@@ -11,58 +12,67 @@ class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){}, child: Icon(Icons.add),),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            SizedBox(height: 16,),
-            SizedBox(
-              height: 100,
-              child: ListView.separated(
-                itemCount: 4,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return TaskCountByStatusCard(
-                    title: 'New',
-                    count: 2,
-                  );
-                }, separatorBuilder: (context, index) {
-                  return SizedBox(width: 8,);
-              },
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 12,
               ),
-            )
-          ],
-        ),
-      )
-    );
-  }
-}
-
-class TaskCountByStatusCard extends StatelessWidget {
-  const TaskCountByStatusCard({
-    super.key, required this.title, required this.count,
-  });
-
-  final String title;
-  final int count;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
-        child: Column(
-          children: [
-            Text('$count', style: Theme.of(context).textTheme.titleLarge,),
-            Text(title, style: TextStyle(
-              color: Colors.grey,
-            ),),
-          ],
-        ),
-      ),
-    );
+              SizedBox(
+                height: 100,
+                child: ListView.separated(
+                  itemCount: 4,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return TaskCountByStatusCard(
+                      title: 'New',
+                      count: 2,
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return SizedBox(
+                      width: 8,
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 8,),
+              Expanded(
+                  child: ListView.separated(
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.circular(8)
+                          ),
+                          tileColor: Colors.white,
+                          title: Text('Title will be here'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Description of the task. How this task will be done.'),
+                              Text('Date: 30/10/2025',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600
+                              ),),
+                            ],
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          height: 12,
+                        );
+                      },
+                      itemCount: 10),
+              )
+            ],
+          ),
+        ));
   }
 }
