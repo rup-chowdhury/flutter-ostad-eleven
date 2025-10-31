@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager_basic/ui/widgets/photo_picker_field.dart';
 import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 import 'package:task_manager_basic/ui/widgets/tm_app_bar.dart';
 
@@ -40,21 +41,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                       style: TextTheme.of(context).titleLarge,
                   ),
                   SizedBox(height: 24,),
-                  Container(
-                    height: 50,
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      spacing: 16,
-                      children: [
-                        PhotoPickerField(),
-                        Expanded(child: Text('No photo selected')),
-                      ],
-                    ),
-                  ),
+                  PhotoPickerField(),
                   SizedBox(height: 8,),
                   TextFormField(
                     controller: _emailTextEditingController,
@@ -115,25 +102,4 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   }
 }
 
-class PhotoPickerField extends StatelessWidget {
-  const PhotoPickerField({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      width: 90,
-      height: double.maxFinite,
-      decoration: BoxDecoration(
-        color: Colors.blueGrey,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(8),
-          bottomLeft: Radius.circular(8),
-        )
-      ),
-      child: Text('Photo', style: TextStyle(color: Colors.white),),
-    );
-  }
-}
