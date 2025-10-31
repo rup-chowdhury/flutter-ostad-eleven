@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:task_manager_basic/ui/widgets/photo_picker_field.dart';
 import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 import 'package:task_manager_basic/ui/widgets/tm_app_bar.dart';
@@ -23,6 +24,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  final ImagePicker _imagePicker = ImagePicker();
+  XFile? _selectedImage;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +45,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                       style: TextTheme.of(context).titleLarge,
                   ),
                   SizedBox(height: 24,),
-                  PhotoPickerField(),
+                  PhotoPickerField(
+                    onTap: _pickImage,
+                    selectedPhoto: _selectedImage,
+                  ),
                   SizedBox(height: 8,),
                   TextFormField(
                     controller: _emailTextEditingController,
@@ -89,6 +96,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _pickImage() async {
+    XFile? pickedImage = await _imagePicker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      _selectedImage = pickedImage;
+      setState(() {});
+    }
   }
 
   @override
