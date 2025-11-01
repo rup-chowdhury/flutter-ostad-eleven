@@ -41,10 +41,11 @@ class PhotoPickerField extends StatelessWidget {
               ),
             ),
             Expanded(
-                child: Text(selectedPhoto == null
-                    ? 'No photo selected'
-                    : selectedPhoto!.name, maxLines: 1,
-                overflow: TextOverflow.ellipsis,)),
+                child: Text(
+              selectedPhoto == null ? 'No photo selected' : selectedPhoto!.name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            )),
           ],
         ),
       ),
