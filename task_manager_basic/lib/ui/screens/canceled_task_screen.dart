@@ -14,25 +14,29 @@ class _CanceledTaskScreenState extends State<CanceledTaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              SizedBox(height: 8,),
-              Expanded(
-                  child: ListView.separated(
-                      itemBuilder: (context, index) {
-                        return TaskCard(labelText: 'Canceled', labelBGColor: Colors.redAccent,);
-                      },
-                      separatorBuilder: (context, index) {
-                        return SizedBox(
-                          height: 12,
-                        );
-                      },
-                      itemCount: 10),
-              )
-            ],
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 8,
           ),
-        ));
+          Expanded(
+            child: ListView.separated(
+                itemBuilder: (context, index) {
+                  return TaskCard(
+                    labelText: 'Canceled',
+                    labelBGColor: Colors.redAccent,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox(
+                    height: 12,
+                  );
+                },
+                itemCount: 10),
+          )
+        ],
+      ),
+    ));
   }
 }
-
