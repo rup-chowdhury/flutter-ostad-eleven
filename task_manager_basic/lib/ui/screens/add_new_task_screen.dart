@@ -11,7 +11,8 @@ class AddNewTaskScreen extends StatefulWidget {
 
 class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
   final TextEditingController _titleTEController = TextEditingController();
-  final TextEditingController _descriptionTEController = TextEditingController();
+  final TextEditingController _descriptionTEController =
+      TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -28,9 +29,13 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 32),
-                  Text('Add New Task',
-                  style: Theme.of(context).textTheme.titleLarge,),
-                  SizedBox(height: 16,),
+                  Text(
+                    'Add New Task',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
                   TextFormField(
                     controller: _titleTEController,
                     decoration: InputDecoration(
@@ -38,7 +43,9 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                     ),
                     textInputAction: TextInputAction.next,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   TextFormField(
                     controller: _descriptionTEController,
                     maxLines: 6,
@@ -46,8 +53,10 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                       hintText: 'Description',
                     ),
                   ),
-                  SizedBox(height: 16,),
-                  FilledButton(onPressed: (){}, child: Text('Add Task')),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  FilledButton(onPressed: () {}, child: Text('Add Task')),
                 ],
               ),
             ),
