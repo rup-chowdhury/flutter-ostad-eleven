@@ -13,15 +13,15 @@ class UpdateProfileScreen extends StatefulWidget {
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   final TextEditingController _emailTextEditingController =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _firstNameTextEditingController =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _lastNameTextEditingController =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _mobileTextEditingController =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _passwordTextEditingController =
-  TextEditingController();
+      TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final ImagePicker _imagePicker = ImagePicker();
@@ -40,16 +40,23 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 48,),
-                  Text('Update Profile',
-                      style: TextTheme.of(context).titleLarge,
+                  SizedBox(
+                    height: 48,
                   ),
-                  SizedBox(height: 24,),
+                  Text(
+                    'Update Profile',
+                    style: TextTheme.of(context).titleLarge,
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
                   PhotoPickerField(
                     onTap: _pickImage,
                     selectedPhoto: _selectedImage,
                   ),
-                  SizedBox(height: 8,),
+                  SizedBox(
+                    height: 8,
+                  ),
                   TextFormField(
                     controller: _emailTextEditingController,
                     decoration: InputDecoration(hintText: 'Email'),
@@ -99,7 +106,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   }
 
   Future<void> _pickImage() async {
-    XFile? pickedImage = await _imagePicker.pickImage(source: ImageSource.gallery);
+    XFile? pickedImage =
+        await _imagePicker.pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       _selectedImage = pickedImage;
       setState(() {});
@@ -116,5 +124,3 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     super.dispose();
   }
 }
-
-
