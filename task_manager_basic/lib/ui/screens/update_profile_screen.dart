@@ -30,7 +30,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TMAppBar(),
+      appBar: TMAppBar(
+        fromUpdateProfile: true,
+      ),
       body: ScreenBackground(
         child: SingleChildScrollView(
           child: Padding(
