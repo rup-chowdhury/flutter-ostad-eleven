@@ -8,6 +8,8 @@ import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  static const String name = '/login';
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -104,27 +106,23 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onTapForgotPasswordButton() {
-    Navigator.push(
+    Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (context) => ForgotPasswordEmailVerificationScreen(),
-      ),
+      ForgotPasswordEmailVerificationScreen.name,
     );
   }
 
   void _onTapSignUpButton() {
-    Navigator.push(
+    Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (context) => SignUpScreen(),
-      ),
+      SignUpScreen.name,
     );
   }
 
   void _onTapLoginButton() {
-    Navigator.pushAndRemoveUntil(
+    Navigator.pushNamedAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => MainNavBarHolderScreen()),
+        MainNavBarHolderScreen.name,
         (predicate) => false);
   }
 

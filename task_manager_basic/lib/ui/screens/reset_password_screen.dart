@@ -8,13 +8,17 @@ import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
 
+  static const String name = '/reset-password';
+
   @override
   State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  final TextEditingController _passwordTextEditingController = TextEditingController();
-  final TextEditingController _confirmPasswordTextEditingController = TextEditingController();
+  final TextEditingController _passwordTextEditingController =
+      TextEditingController();
+  final TextEditingController _confirmPasswordTextEditingController =
+      TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -39,8 +43,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   Text(
                     'Password should be more than 6 letters and combination of letters and numbers',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Colors.grey,
-                    ),
+                          color: Colors.grey,
+                        ),
                   ),
                   SizedBox(
                     height: 24,
@@ -66,11 +70,14 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   FilledButton(
                       onPressed: _onTapNextButton,
                       child: Icon(Icons.arrow_circle_right_outlined)),
-                  SizedBox(height: 40,),
+                  SizedBox(
+                    height: 40,
+                  ),
                   Center(
                     child: RichText(
                       text: TextSpan(
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w600),
                           text: "Already have an account? ",
                           children: [
                             TextSpan(
@@ -78,7 +85,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               style: TextStyle(
                                 color: Colors.green,
                               ),
-                              recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = _onTapSignInButton,
                             )
                           ]),
                     ),
@@ -93,11 +101,17 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   }
 
   void _onTapNextButton() {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (predicate) => false);
+    Navigator.pushNamedAndRemoveUntil(
+        context,
+        LoginScreen.name,
+        (predicate) => false);
   }
 
   void _onTapSignInButton() {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (predicate) => false);
+    Navigator.pushNamedAndRemoveUntil(
+        context,
+        LoginScreen.name,
+        (predicate) => false);
   }
 
   @override

@@ -6,6 +6,8 @@ import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
+  static const String name = '/sign-up';
+
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }

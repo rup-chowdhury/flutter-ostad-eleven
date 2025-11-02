@@ -9,12 +9,17 @@ import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 class ForgotPasswordOtpVerificationScreen extends StatefulWidget {
   const ForgotPasswordOtpVerificationScreen({super.key});
 
+  static const String name = '/forgot-password-otp';
+
   @override
-  State<ForgotPasswordOtpVerificationScreen> createState() => _ForgotPasswordOtpVerificationScreenState();
+  State<ForgotPasswordOtpVerificationScreen> createState() =>
+      _ForgotPasswordOtpVerificationScreenState();
 }
 
-class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpVerificationScreen> {
-  final TextEditingController _otpTextEditingController = TextEditingController();
+class _ForgotPasswordOtpVerificationScreenState
+    extends State<ForgotPasswordOtpVerificationScreen> {
+  final TextEditingController _otpTextEditingController =
+      TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -39,8 +44,8 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                   Text(
                     'A 6 digits OTP has been sent to your Email address.',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Colors.grey,
-                    ),
+                          color: Colors.grey,
+                        ),
                   ),
                   SizedBox(
                     height: 24,
@@ -66,13 +71,17 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                     height: 32,
                   ),
                   FilledButton(
-                      onPressed: _onTapVerifyButton,
-                      child: Text('Verify'),),
-                  SizedBox(height: 40,),
+                    onPressed: _onTapVerifyButton,
+                    child: Text('Verify'),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
                   Center(
                     child: RichText(
                       text: TextSpan(
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w600),
                           text: "Already have an account? ",
                           children: [
                             TextSpan(
@@ -80,7 +89,8 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
                               style: TextStyle(
                                 color: Colors.green,
                               ),
-                              recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = _onTapSignInButton,
                             )
                           ]),
                     ),
@@ -95,11 +105,17 @@ class _ForgotPasswordOtpVerificationScreenState extends State<ForgotPasswordOtpV
   }
 
   void _onTapSignInButton() {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (predicate) => false);
+    Navigator.pushNamedAndRemoveUntil(
+        context,
+        LoginScreen.name,
+        (predicate) => false);
   }
 
   void _onTapVerifyButton() {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ResetPasswordScreen()), (predicate) => false);
+    Navigator.pushNamedAndRemoveUntil(
+        context,
+        ResetPasswordScreen.name,
+        (predicate) => false);
   }
 
   @override

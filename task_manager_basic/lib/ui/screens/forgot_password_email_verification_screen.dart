@@ -7,12 +7,17 @@ import 'package:task_manager_basic/ui/widgets/screen_background.dart';
 class ForgotPasswordEmailVerificationScreen extends StatefulWidget {
   const ForgotPasswordEmailVerificationScreen({super.key});
 
+  static const String name = '/forgot-password-email';
+
   @override
-  State<ForgotPasswordEmailVerificationScreen> createState() => _ForgotPasswordEmailVerificationScreenState();
+  State<ForgotPasswordEmailVerificationScreen> createState() =>
+      _ForgotPasswordEmailVerificationScreenState();
 }
 
-class _ForgotPasswordEmailVerificationScreenState extends State<ForgotPasswordEmailVerificationScreen> {
-  final TextEditingController _emailTextEditingController = TextEditingController();
+class _ForgotPasswordEmailVerificationScreenState
+    extends State<ForgotPasswordEmailVerificationScreen> {
+  final TextEditingController _emailTextEditingController =
+      TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -37,29 +42,29 @@ class _ForgotPasswordEmailVerificationScreenState extends State<ForgotPasswordEm
                   Text(
                     'A 6 digits OTP will be sent to your Email address.',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Colors.grey,
-                    ),
+                          color: Colors.grey,
+                        ),
                   ),
                   SizedBox(
                     height: 24,
                   ),
                   TextFormField(
-                    controller: _emailTextEditingController,
-                    decoration: InputDecoration(
-                      hintText: 'Email'
-                    )
-                  ),
+                      controller: _emailTextEditingController,
+                      decoration: InputDecoration(hintText: 'Email')),
                   SizedBox(
                     height: 32,
                   ),
                   FilledButton(
                       onPressed: _onTapNextButton,
                       child: Icon(Icons.arrow_circle_right_outlined)),
-                  SizedBox(height: 40,),
+                  SizedBox(
+                    height: 40,
+                  ),
                   Center(
                     child: RichText(
                       text: TextSpan(
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w600),
                           text: "Have account? ",
                           children: [
                             TextSpan(
@@ -67,7 +72,8 @@ class _ForgotPasswordEmailVerificationScreenState extends State<ForgotPasswordEm
                               style: TextStyle(
                                 color: Colors.green,
                               ),
-                              recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = _onTapSignInButton,
                             )
                           ]),
                     ),
@@ -86,7 +92,9 @@ class _ForgotPasswordEmailVerificationScreenState extends State<ForgotPasswordEm
   }
 
   void _onTapNextButton() {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgotPasswordOtpVerificationScreen()));
+    Navigator.pushNamed(
+        context,
+        ForgotPasswordOtpVerificationScreen.name);
   }
 
   @override
