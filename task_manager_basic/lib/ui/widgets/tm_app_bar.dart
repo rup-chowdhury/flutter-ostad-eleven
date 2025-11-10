@@ -49,7 +49,7 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+        IconButton(onPressed: _onTapLogOutButtonAction, icon: Icon(Icons.logout)),
       ],
     );
   }
