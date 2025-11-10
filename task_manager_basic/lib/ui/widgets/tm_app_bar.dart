@@ -57,7 +57,7 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
-  void onTapLogOutButtonAction() {
-    
+  void _onTapLogOutButtonAction() {
+
   }
 }
