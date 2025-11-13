@@ -47,6 +47,47 @@ class ApiCaller {
     }
   }
 
+  Future<ApiResponse> postRequest({required String url, Map<String, dynamic>? body}) async {
+    try {
+      Uri uri = Uri.parse(url);
+
+      _logRequest(url);
+      Response response = await get(uri);
+      _logResponse(url, response);
+
+      print(url);
+      print(response.statusCode);
+      print(response.body);
+
+      final int statusCode = response.statusCode;
+
+      if (response.statusCode == 200) {
+        //SUCCESS
+        final decodedData = jsonDecode(response.body);
+        return ApiResponse(
+          isSuccess: true,
+          responseCode: statusCode,
+          responseData: decodedData,
+        );
+      } else {
+        //FAILURE
+        final decodedData = jsonDecode(response.body);
+        return ApiResponse(
+          isSuccess: false,
+          responseCode: statusCode,
+          responseData: decodedData,
+        );
+      }
+    } on Exception catch (e) {
+      return ApiResponse(
+        isSuccess: false,
+        responseCode: -1,
+        responseData: null,
+        errorMessage: e.toString(),
+      );
+    }
+  }
+
   void _logRequest(String url) {
     _logger.i('URL => $url');
   }
