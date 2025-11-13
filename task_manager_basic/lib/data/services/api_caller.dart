@@ -47,7 +47,8 @@ class ApiCaller {
     }
   }
 
-  Future<ApiResponse> postRequest({required String url, Map<String, dynamic>? body}) async {
+  Future<ApiResponse> postRequest(
+      {required String url, Map<String, dynamic>? body}) async {
     try {
       Uri uri = Uri.parse(url);
 
@@ -94,8 +95,8 @@ class ApiCaller {
 
   void _logResponse(String url, Response response) {
     _logger.i('URL => $url\n'
-    'Status Code =>${response.statusCode}'
-    'Body => ${response.body}');
+        'Status Code =>${response.statusCode}'
+        'Body => ${response.body}');
   }
 }
 
