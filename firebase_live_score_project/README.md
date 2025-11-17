@@ -1,6 +1,6 @@
 # firebase_live_score_project
 
-Live score app with firebase
+Show Student List with firebase
 
 ## Getting Started
 

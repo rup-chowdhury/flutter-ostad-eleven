@@ -10,86 +10,47 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<CricketMatch> _matchList = [];
+  List<StudentList> _studentList = [];
   bool _inProgress = false;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _getCricketMatches();
-  // }
-  //
-  // Future<void> _getCricketMatches() async {
-  //   _inProgress = true;
-  //   setState(() {});
-  //   _matchList.clear();
-  //   final snapshots = await FirebaseFirestore.instance
-  //       .collection('cricket')
-  //       .get();
-  //   for (QueryDocumentSnapshot<Map<String, dynamic>> doc in snapshots.docs) {
-  //     _matchList.add(
-  //       CricketMatch(
-  //         id: doc.id,
-  //         team1: doc.get('team1'),
-  //         team1Score: doc.get('team1_score'),
-  //         team2: doc.get('team2'),
-  //         team2Score: doc.get('team2_score'),
-  //         isRunning: doc.get('is_running'),
-  //         winner: doc.get('winner_team'),
-  //       ),
-  //     );
-  //   }
-  //   _inProgress = false;
-  //   setState(() {});
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Live score')),
+      appBar: AppBar(title: Text('Students')),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('cricket').snapshots(),
+        stream: FirebaseFirestore.instance.collection('students').snapshots(),
         builder: (context, snapshots) {
           if (snapshots.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshots.hasError) {
             return Center(child: Text(snapshots.error.toString()));
           } else if (snapshots.hasData) {
-            _matchList.clear();
+            _studentList.clear();
             for (QueryDocumentSnapshot<Map<String, dynamic>> doc
                 in snapshots.data!.docs) {
-              _matchList.add(
-                CricketMatch(
+              _studentList.add(
+                StudentList(
                   id: doc.id,
-                  team1: doc.get('team1'),
-                  team1Score: doc.get('team1_score'),
-                  team2: doc.get('team2'),
-                  team2Score: doc.get('team2_score'),
-                  isRunning: doc.get('is_running'),
-                  winner: doc.get('winner_team'),
+                  name: doc.get('name'),
+                  rollNumber: doc.get('roll_number'),
+                  course: doc.get('course'),
                 ),
               );
             }
 
             return ListView.builder(
-              itemCount: _matchList.length,
+              itemCount: _studentList.length,
               itemBuilder: (context, index) {
-                final cricketMatch = _matchList[index];
+                final student = _studentList[index];
                 return ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: cricketMatch.isRunning
-                        ? Colors.green
-                        : Colors.red,
-                    radius: 12,
+                    child: Icon(Icons.book_outlined),
                   ),
-                  title: Text('${cricketMatch.team1} vs ${cricketMatch.team2}'),
+                  title: Text(student.name, style: TextStyle(fontWeight: FontWeight.w600),),
                   trailing: Text(
-                    '${cricketMatch.team1Score} - ${cricketMatch.team2Score}',
+                    student.rollNumber.toString()
                   ),
                   subtitle: Text(
-                    cricketMatch.isRunning
-                        ? "Pending . . ."
-                        : 'Winner: ${cricketMatch.winner}',
+                    student.course
                   ),
                 );
               },
@@ -98,40 +59,20 @@ class _HomeScreenState extends State<HomeScreen> {
           return SizedBox();
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          FirebaseFirestore.instance.collection('cricket').doc('revsru').set({
-            // replace .doc().set() with .add() if you don't have problem with random document id
-            'team1': 'Ru',
-            'team1_score': 100,
-            'team2': 'Re',
-            'team2_score': 150,
-            'is_running': false,
-            'winner_team': 'Re',
-          });
-        },
-      ),
     );
   }
 }
 
-class CricketMatch {
+class StudentList {
   final String id;
-  final String team1;
-  final int team1Score;
-  final String team2;
-  final int team2Score;
-  final bool isRunning;
-  final String winner;
+  final String name;
+  final int rollNumber;
+  final String course;
 
-  CricketMatch({
+  StudentList({
     required this.id,
-    required this.team1,
-    required this.team1Score,
-    required this.team2,
-    required this.team2Score,
-    required this.isRunning,
-    required this.winner,
+    required this.name,
+    required this.rollNumber,
+    required this.course,
   });
 }

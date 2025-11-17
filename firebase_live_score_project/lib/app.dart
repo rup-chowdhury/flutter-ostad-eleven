@@ -1,14 +1,14 @@
 import 'package:firebase_live_score_project/home_screen.dart';
 import 'package:flutter/material.dart';
 
-class CricketLiveScoreApp extends StatefulWidget {
-  const CricketLiveScoreApp({super.key});
+class StudentListApp extends StatefulWidget {
+  const StudentListApp({super.key});
 
   @override
-  State<CricketLiveScoreApp> createState() => _CricketLiveScoreAppState();
+  State<StudentListApp> createState() => _StudentListAppState();
 }
 
-class _CricketLiveScoreAppState extends State<CricketLiveScoreApp> {
+class _StudentListAppState extends State<StudentListApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
