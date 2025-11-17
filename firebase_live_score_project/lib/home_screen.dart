@@ -13,7 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
   List<CricketMatch> _matchList = [];
   bool _inProgress = false;
 
-
   // @override
   // void initState() {
   //   super.initState();
@@ -51,7 +50,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('cricket').snapshots(),
         builder: (context, snapshots) {
-            for (QueryDocumentSnapshot<Map<String, dynamic>> doc in snapshots.data!.docs) {
+          if (snapshots.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshots.hasError) {
+            return Center(child: Text(snapshots.error.toString()));
+          } else if (snapshots.hasData) {
+            _matchList.clear();
+            for (QueryDocumentSnapshot<Map<String, dynamic>> doc
+            in snapshots.data!.docs) {
               _matchList.add(
                 CricketMatch(
                   id: doc.id,
@@ -65,19 +71,32 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }
 
-          return ListView.builder(
-            itemCount: _matchList.length,
-            itemBuilder: (context, index) {
-              final cricketMatch = _matchList[index];
-              return ListTile(
-                leading: CircleAvatar(backgroundColor: cricketMatch.isRunning ? Colors.green : Colors.red, radius: 12),
-                title: Text('${cricketMatch.team1} vs ${cricketMatch.team2}'),
-                trailing: Text('${cricketMatch.team1Score} - ${cricketMatch.team2Score}'),
-                subtitle: Text(cricketMatch.isRunning ? "Pending . . ." :'Winner: ${cricketMatch.winner}'),
-              );
-            },
-          );
-        }
+            return ListView.builder(
+              itemCount: _matchList.length,
+              itemBuilder: (context, index) {
+                final cricketMatch = _matchList[index];
+                return ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: cricketMatch.isRunning
+                        ? Colors.green
+                        : Colors.red,
+                    radius: 12,
+                  ),
+                  title: Text('${cricketMatch.team1} vs ${cricketMatch.team2}'),
+                  trailing: Text(
+                    '${cricketMatch.team1Score} - ${cricketMatch.team2Score}',
+                  ),
+                  subtitle: Text(
+                    cricketMatch.isRunning
+                        ? "Pending . . ."
+                        : 'Winner: ${cricketMatch.winner}',
+                  ),
+                );
+              },
+            );
+          }
+          return SizedBox();
+        },
       ),
     );
   }
