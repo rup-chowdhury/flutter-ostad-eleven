@@ -55,11 +55,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView.builder(
           itemCount: _matchList.length,
           itemBuilder: (context, index) {
+            final cricketMatch = _matchList[index];
             return ListTile(
-              leading: CircleAvatar(backgroundColor: Colors.green, radius: 12),
-              title: Text('Bangladesh vs England'),
-              trailing: Text('12 - 14'),
-              subtitle: Text('Winner: '),
+              leading: CircleAvatar(backgroundColor: cricketMatch.isRunning ? Colors.green : Colors.red, radius: 12),
+              title: Text('${cricketMatch.team1} vs ${cricketMatch.team2}'),
+              trailing: Text('${cricketMatch.team1Score} - ${cricketMatch.team2Score}'),
+              subtitle: Text(cricketMatch.isRunning ? "Pending . . ." :'Winner: ${cricketMatch.winner}'),
             );
           },
         ),
