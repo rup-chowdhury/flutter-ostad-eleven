@@ -11,6 +11,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<CricketMatch> _matchList = [];
+  bool _inProgress = false;
+
 
   @override
   void initState() {
@@ -20,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _getCricketMatches() async {
+    _inProgress = true;
+    setState(() {});
     _matchList.clear();
     final snapshots = await FirebaseFirestore.instance
         .collection('cricket')
@@ -37,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     }
+    _inProgress = false;
     setState(() {});
   }
 
@@ -44,16 +49,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Live score')),
-      body: ListView.builder(
-        itemCount: _matchList.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: CircleAvatar(backgroundColor: Colors.green, radius: 12),
-            title: Text('Bangladesh vs England'),
-            trailing: Text('12 - 14'),
-            subtitle: Text('Winner: '),
-          );
-        },
+      body: Visibility(
+        visible: _inProgress == false,
+        replacement: Center(child: CircularProgressIndicator()),
+        child: ListView.builder(
+          itemCount: _matchList.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(backgroundColor: Colors.green, radius: 12),
+              title: Text('Bangladesh vs England'),
+              trailing: Text('12 - 14'),
+              subtitle: Text('Winner: '),
+            );
+          },
+        ),
       ),
     );
   }
