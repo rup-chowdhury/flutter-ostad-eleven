@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (snapshots.hasData) {
             _matchList.clear();
             for (QueryDocumentSnapshot<Map<String, dynamic>> doc
-            in snapshots.data!.docs) {
+                in snapshots.data!.docs) {
               _matchList.add(
                 CricketMatch(
                   id: doc.id,
@@ -96,6 +96,20 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           }
           return SizedBox();
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          FirebaseFirestore.instance.collection('cricket').doc('invspk').set({
+            // replace .doc().set() with .add() if you don't have problem with random document id
+            'team1': 'India',
+            'team1_score': 100,
+            'team2': 'Pakistan',
+            'team2_score': 50,
+            'is_running': true,
+            'winner_team': 'India',
+          });
         },
       ),
     );
