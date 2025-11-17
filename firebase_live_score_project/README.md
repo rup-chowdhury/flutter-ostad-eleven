@@ -1,6 +1,6 @@
 # firebase_live_score_project
 
-A new Flutter project.
+Live score app with firebase
 
 ## Getting Started
 
