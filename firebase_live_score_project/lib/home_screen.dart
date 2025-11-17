@@ -101,14 +101,14 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          FirebaseFirestore.instance.collection('cricket').doc('invspk').set({
+          FirebaseFirestore.instance.collection('cricket').doc('revsru').set({
             // replace .doc().set() with .add() if you don't have problem with random document id
-            'team1': 'India',
+            'team1': 'Ru',
             'team1_score': 100,
-            'team2': 'Pakistan',
-            'team2_score': 50,
-            'is_running': true,
-            'winner_team': 'India',
+            'team2': 'Re',
+            'team2_score': 150,
+            'is_running': false,
+            'winner_team': 'Re',
           });
         },
       ),
