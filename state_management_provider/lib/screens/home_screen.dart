@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:state_management_provider/counter_widget.dart';
+import 'package:state_management_provider/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,8 +10,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   Widget build(BuildContext context) {
+    final counter = CounterWidget.of(context)?.counter ?? 0;
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
@@ -17,7 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Column(
           children: [
-            FilledButton(onPressed: (){}, child: child)
+            FilledButton(onPressed: (){}, child: Text('Profile')),
+            FilledButton(onPressed: (){}, child: Text('ABC')),
+            FilledButton(onPressed: (){}, child: Text('Login')),
+            FilledButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (ctx) => SettingsScreen()));
+            }, child: Text('Settings')),
           ],
         )
       ),
