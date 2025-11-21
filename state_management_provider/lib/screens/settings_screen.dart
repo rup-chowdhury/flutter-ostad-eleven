@@ -24,6 +24,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ListenableBuilder(
               listenable: counterNotifier,
