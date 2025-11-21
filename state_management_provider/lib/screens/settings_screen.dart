@@ -32,6 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               }
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(onPressed: () {
                   counterNotifier.decrement();
