@@ -1,0 +1,24 @@
+import 'package:e_commerce/app/app_routes.dart';
+import 'package:e_commerce/features/auth/presentation/screens/splash_screen.dart';
+import 'package:flutter/material.dart';
+
+class CraftyBayApp extends StatefulWidget {
+  const CraftyBayApp({super.key});
+
+  @override
+  State<CraftyBayApp> createState() => _CraftyBayAppState();
+}
+
+class _CraftyBayAppState extends State<CraftyBayApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      // router
+      // theme
+      initialRoute: SplashScreen.name,
+      onGenerateRoute: AppRoutes.routes,
+      theme: ThemeData(),
+      darkTheme: ThemeData(),
+    );
+  }
+}
