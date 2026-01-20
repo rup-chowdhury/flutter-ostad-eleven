@@ -1,4 +1,5 @@
 import 'package:e_commerce/app/app_routes.dart';
+import 'package:e_commerce/app/app_theme.dart';
 import 'package:e_commerce/features/auth/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,8 @@ class _CraftyBayAppState extends State<CraftyBayApp> {
       // theme
       initialRoute: SplashScreen.name,
       onGenerateRoute: AppRoutes.routes,
-      theme: ThemeData(),
-      darkTheme: ThemeData(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
     );
   }
 }
