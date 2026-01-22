@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "760451399412",
+    "project_id": "live-score-5eaec",
+    "storage_bucket": "live-score-5eaec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760451399412:android:e3305c287b8678f5e6e8a1",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgv4y9ecPsRqpBqbBc7cAAIF00ZXuWR1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760451399412:android:11a8d00da5cbab4ee6e8a1",
+        "android_client_info": {
+          "package_name": "com.example.firebase_live_score_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgv4y9ecPsRqpBqbBc7cAAIF00ZXuWR1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
