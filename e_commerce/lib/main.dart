@@ -9,6 +9,7 @@
 // 8. Network Caller
 
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:e_commerce/app/app.dart';
 import 'package:e_commerce/firebase_options.dart';
@@ -17,14 +18,18 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  runZonedGuarded<Future<void>>(() async {
+
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    // The following lines are the same as previously explained in "Handling uncaught errors"
+
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
 
     runApp(CraftyBayApp());
-  }, (error, stack) => FirebaseCrashlytics.instance.recordError(error, stack));
+
 }
