@@ -2,6 +2,7 @@ import 'package:e_commerce/app/app_routes.dart';
 import 'package:e_commerce/app/app_theme.dart';
 import 'package:e_commerce/features/auth/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class CraftyBayApp extends StatefulWidget {
   const CraftyBayApp({super.key});
@@ -21,6 +22,16 @@ class _CraftyBayAppState extends State<CraftyBayApp> {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'),
+        Locale('bn'),
+      ],
+      locale: Locale('bn'),
 
     );
   }
